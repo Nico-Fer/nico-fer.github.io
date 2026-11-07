@@ -1,0 +1,372 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#173b32">
+  <meta name="description" content="Nicolás Fernández — Software Engineer y AI Engineer en Buenos Aires. Experiencia en IA aplicada, plataformas web e integraciones cloud.">
+  <meta property="og:title" content="Nicolás Fernández — Software & AI Engineer">
+  <meta property="og:description" content="IA aplicada, productos digitales e integraciones cloud.">
+  <meta property="og:type" content="website">
+  <title>Nicolás Fernández — Software & AI Engineer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      color-scheme: light;
+      --paper: #f4f3ed;
+      --paper-2: #eae9e1;
+      --ink: #19241f;
+      --muted: #64706a;
+      --line: #d7d9d0;
+      --forest: #173b32;
+      --forest-2: #214b40;
+      --lime: #d8f278;
+      --white: #fbfbf7;
+      --mono: "DM Mono", "SFMono-Regular", Consolas, monospace;
+      --sans: "DM Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      --display: "Manrope", var(--sans);
+      --max: 1160px;
+      --gutter: clamp(22px, 5vw, 72px);
+    }
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 86px; }
+    body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(--sans); -webkit-font-smoothing: antialiased; }
+    a { color: inherit; }
+    a:focus-visible, button:focus-visible { outline: 3px solid #91b83b; outline-offset: 4px; }
+    ::selection { background: var(--lime); color: var(--ink); }
+    .progress { position: fixed; z-index: 20; inset: 0 auto auto 0; width: 0; height: 3px; background: var(--lime); }
+    .wrap { width: min(var(--max), calc(100% - var(--gutter) * 2)); margin-inline: auto; }
+    .skip { position: absolute; top: -60px; left: 16px; z-index: 30; padding: 12px 16px; background: var(--lime); color: var(--ink); }
+    .skip:focus { top: 16px; }
+    .nav-shell { position: sticky; top: 0; z-index: 15; background: rgba(244,243,237,.94); border-bottom: 1px solid rgba(25,36,31,.1); backdrop-filter: blur(14px); }
+    .nav { min-height: 72px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+    .brand { display: inline-flex; align-items: center; gap: 11px; text-decoration: none; font-family: var(--display); font-weight: 800; letter-spacing: -.06em; }
+    .brand-mark { display: grid; place-items: center; width: 35px; height: 35px; border-radius: 50%; background: var(--forest); color: var(--lime); font: 500 12px var(--mono); letter-spacing: -.08em; }
+    .nav-links { display: flex; align-items: center; gap: clamp(16px, 3vw, 34px); }
+    .nav-links a { text-decoration: none; color: #435048; font-size: 13px; font-weight: 600; transition: color .2s ease; }
+    .nav-links a:hover { color: #739221; }
+    .nav-contact { padding: 10px 15px; border: 1px solid var(--line); border-radius: 3px; }
+    .hero { position: relative; overflow: hidden; background: var(--forest); color: var(--white); }
+    .hero::after { content: ""; position: absolute; width: 510px; height: 510px; right: -110px; top: -208px; border: 1px solid rgba(216,242,120,.23); border-radius: 50%; box-shadow: 0 0 0 42px rgba(216,242,120,.035), 0 0 0 84px rgba(216,242,120,.03), 0 0 0 126px rgba(216,242,120,.025); pointer-events: none; }
+    .hero-inner { position: relative; z-index: 1; min-height: 600px; padding-block: clamp(72px, 10vw, 126px) clamp(64px, 8vw, 96px); display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(250px, .7fr); align-items: end; gap: 8%; }
+    .eyebrow { display: flex; align-items: center; gap: 10px; margin: 0 0 26px; color: var(--lime); font: 500 11px var(--mono); letter-spacing: .13em; text-transform: uppercase; }
+    .eyebrow::before { content: ""; width: 24px; height: 1px; background: currentColor; }
+    h1 { max-width: 780px; margin: 0; font: 600 clamp(54px, 8.2vw, 106px)/.99 var(--display); letter-spacing: -.075em; text-wrap: balance; }
+    h1 span { color: var(--lime); }
+    .hero-copy { max-width: 580px; margin: 27px 0 0; color: rgba(251,251,247,.77); font-size: clamp(16px, 1.8vw, 19px); line-height: 1.65; }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 31px; }
+    .button { display: inline-flex; min-height: 48px; align-items: center; justify-content: center; gap: 14px; padding: 0 18px; border: 1px solid transparent; border-radius: 3px; text-decoration: none; font-size: 13px; font-weight: 700; transition: transform .2s ease, background .2s ease, color .2s ease; }
+    .button:hover { transform: translateY(-2px); }
+    .button-lime { background: var(--lime); color: var(--ink); }
+    .button-lime:hover { background: #e5ff94; }
+    .button-ghost { border-color: rgba(251,251,247,.32); color: var(--white); }
+    .button-ghost:hover { background: rgba(255,255,255,.08); }
+    .arrow { font-size: 18px; line-height: 1; }
+    .hero-aside { align-self: end; max-width: 325px; padding: 22px 0 0; border-top: 1px solid rgba(251,251,247,.28); }
+    .aside-label { margin: 0 0 15px; color: rgba(251,251,247,.56); font: 500 10px var(--mono); letter-spacing: .14em; text-transform: uppercase; }
+    .focus-list { display: grid; gap: 12px; margin: 0; padding: 0; list-style: none; }
+    .focus-list li { display: flex; align-items: center; gap: 11px; font-size: 14px; color: rgba(251,251,247,.92); }
+    .focus-list li::before { content: "↗"; color: var(--lime); font: 14px var(--mono); }
+    .hero-foot { display: flex; justify-content: space-between; align-items: center; gap: 20px; padding-block: 15px; border-top: 1px solid rgba(251,251,247,.16); color: rgba(251,251,247,.55); font: 10px var(--mono); letter-spacing: .08em; text-transform: uppercase; }
+    section { padding-block: clamp(76px, 10vw, 132px); }
+    .section-heading { display: flex; align-items: end; justify-content: space-between; gap: 24px; margin-bottom: 42px; }
+    .section-kicker { margin: 0 0 13px; color: #657d32; font: 500 11px var(--mono); letter-spacing: .14em; text-transform: uppercase; }
+    h2 { margin: 0; font: 600 clamp(34px, 5vw, 62px)/1.05 var(--display); letter-spacing: -.065em; text-wrap: balance; }
+    .section-intro { max-width: 380px; margin: 0; color: var(--muted); font-size: 15px; line-height: 1.7; }
+    .projects { padding-top: clamp(76px, 9vw, 110px); }
+    .project-feature { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(290px, .85fr); background: var(--forest); color: var(--white); }
+    .project-main { padding: clamp(28px, 5vw, 58px); }
+    .project-meta { display: flex; flex-wrap: wrap; gap: 9px; margin-bottom: 29px; }
+    .pill { display: inline-flex; align-items: center; min-height: 27px; padding: 0 9px; border: 1px solid rgba(255,255,255,.27); border-radius: 2px; color: rgba(255,255,255,.78); font: 10px var(--mono); letter-spacing: .04em; text-transform: uppercase; }
+    .pill.lime { border-color: var(--lime); color: var(--lime); }
+    .project-main h3 { margin: 0; font: 600 clamp(40px, 6vw, 73px)/1 var(--display); letter-spacing: -.075em; }
+    .project-main .lead { max-width: 530px; margin: 22px 0 0; color: rgba(255,255,255,.76); font-size: 16px; line-height: 1.7; }
+    .project-links { display: flex; flex-wrap: wrap; gap: 20px; margin-top: 30px; }
+    .text-link { display: inline-flex; align-items: center; gap: 8px; color: var(--lime); font-size: 13px; font-weight: 700; text-decoration: none; }
+    .text-link:hover { text-decoration: underline; text-underline-offset: 4px; }
+    .project-detail { display: flex; flex-direction: column; justify-content: space-between; padding: clamp(28px, 4.5vw, 48px); background: var(--forest-2); }
+    .detail-overline { margin: 0; color: var(--lime); font: 500 10px var(--mono); letter-spacing: .15em; text-transform: uppercase; }
+    .feature-list { display: grid; gap: 0; margin: 26px 0; padding: 0; list-style: none; }
+    .feature-list li { display: grid; grid-template-columns: 26px 1fr; gap: 12px; padding: 15px 0; border-bottom: 1px solid rgba(255,255,255,.17); color: rgba(255,255,255,.88); font-size: 14px; line-height: 1.5; }
+    .feature-list b { color: var(--lime); font: 11px var(--mono); }
+    .stack-label { margin: 0 0 10px; color: rgba(255,255,255,.53); font: 10px var(--mono); text-transform: uppercase; letter-spacing: .12em; }
+    .stack { margin: 0; color: rgba(255,255,255,.86); font-size: 12px; line-height: 1.8; }
+    .project-grid { display: grid; grid-template-columns: 1fr 1fr; border-top: 1px solid var(--line); }
+    .project-card { min-height: 270px; padding: clamp(26px, 4vw, 42px) clamp(20px, 4vw, 46px) 30px 0; border-bottom: 1px solid var(--line); }
+    .project-card + .project-card { padding-left: clamp(20px, 4vw, 46px); border-left: 1px solid var(--line); }
+    .card-top { display: flex; justify-content: space-between; gap: 20px; color: #78827b; font: 10px var(--mono); letter-spacing: .09em; text-transform: uppercase; }
+    .card-arrow { color: #657d32; font: 20px var(--mono); text-decoration: none; }
+    .project-card h3 { margin: 30px 0 12px; font: 600 clamp(23px, 3vw, 34px)/1.13 var(--display); letter-spacing: -.05em; }
+    .project-card p { max-width: 480px; margin: 0; color: var(--muted); font-size: 14px; line-height: 1.7; }
+    .card-tags { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 22px; }
+    .card-tags span { padding: 6px 9px; background: var(--paper-2); color: #48544d; font: 10px var(--mono); }
+    .experience { background: var(--paper-2); }
+    .experience-head { display: grid; grid-template-columns: .8fr 1.2fr; gap: 7%; margin-bottom: 56px; }
+    .experience-head .section-intro { align-self: end; }
+    .timeline { border-top: 1px solid #c8cbc1; }
+    .role { display: grid; grid-template-columns: 175px minmax(0, 1fr) 190px; gap: 28px; padding: 25px 0 27px; border-bottom: 1px solid #c8cbc1; }
+    .role-date { padding-top: 4px; color: #69766f; font: 11px var(--mono); line-height: 1.6; }
+    .role-main h3 { margin: 0; font: 600 20px/1.2 var(--display); letter-spacing: -.035em; }
+    .role-company { margin: 5px 0 0; color: #637169; font-size: 13px; }
+    .role-points { max-width: 650px; margin: 14px 0 0; padding-left: 17px; color: #536159; font-size: 13px; line-height: 1.75; }
+    .role-points li + li { margin-top: 3px; }
+    .role-tools { align-self: start; display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 6px; }
+    .role-tools span { padding: 6px 8px; border: 1px solid #c8cbc1; color: #5c6961; font: 9px var(--mono); }
+    .skills { padding-block: clamp(76px, 9vw, 112px); }
+    .skills-layout { display: grid; grid-template-columns: .8fr 1.2fr; gap: 7%; }
+    .skills-list { border-top: 1px solid var(--line); }
+    .skill-row { display: grid; grid-template-columns: 180px 1fr; gap: 24px; padding: 19px 0; border-bottom: 1px solid var(--line); }
+    .skill-row h3 { margin: 2px 0 0; font: 600 14px var(--display); }
+    .skill-row p { margin: 0; color: var(--muted); font-size: 13px; line-height: 1.75; }
+    .about { padding-block: 0 clamp(80px, 10vw, 126px); }
+    .about-panel { display: grid; grid-template-columns: 1.1fr .9fr; gap: 7%; padding: clamp(30px, 6vw, 70px); background: var(--lime); }
+    .about-panel h2 { max-width: 500px; }
+    .about-copy { max-width: 520px; margin: 20px 0 0; color: #3e4d31; font-size: 15px; line-height: 1.8; }
+    .about-facts { align-self: center; display: grid; gap: 0; }
+    .fact { display: grid; grid-template-columns: 118px 1fr; gap: 18px; padding: 15px 0; border-bottom: 1px solid rgba(25,36,31,.22); }
+    .fact:first-child { border-top: 1px solid rgba(25,36,31,.22); }
+    .fact dt { color: #52633e; font: 10px var(--mono); letter-spacing: .1em; text-transform: uppercase; }
+    .fact dd { margin: 0; color: var(--ink); font-size: 13px; font-weight: 600; line-height: 1.6; }
+    .contact { background: var(--forest); color: var(--white); }
+    .contact-inner { display: grid; grid-template-columns: 1fr auto; align-items: end; gap: 30px; }
+    .contact .section-kicker { color: var(--lime); }
+    .contact h2 { max-width: 650px; }
+    .contact-copy { margin: 18px 0 0; color: rgba(255,255,255,.69); font-size: 14px; line-height: 1.7; }
+    .contact-links { display: grid; gap: 10px; min-width: 250px; }
+    .contact-links a { display: flex; justify-content: space-between; gap: 20px; padding: 14px 0; border-bottom: 1px solid rgba(255,255,255,.23); color: var(--white); font-size: 13px; font-weight: 600; text-decoration: none; }
+    .contact-links a span:last-child { color: var(--lime); font: 13px var(--mono); }
+    .contact-links a:hover { color: var(--lime); }
+    footer { background: var(--forest); color: rgba(255,255,255,.55); }
+    .footer-inner { display: flex; justify-content: space-between; gap: 20px; padding-block: 18px 26px; border-top: 1px solid rgba(255,255,255,.17); font: 10px var(--mono); }
+    html.js .reveal { opacity: 0; transform: translateY(16px); transition: opacity .7s ease, transform .7s ease; }
+    html.js .reveal.is-visible { opacity: 1; transform: translateY(0); }
+    @media (max-width: 800px) {
+      .hero-inner { min-height: auto; grid-template-columns: 1fr; gap: 50px; }
+      .hero-aside { max-width: 520px; }
+      .project-feature { grid-template-columns: 1fr; }
+      .project-detail { min-height: 340px; }
+      .experience-head, .skills-layout { grid-template-columns: 1fr; gap: 28px; }
+      .role { grid-template-columns: 125px minmax(0,1fr); gap: 12px 22px; }
+      .role-tools { grid-column: 2; justify-content: flex-start; }
+      .about-panel { grid-template-columns: 1fr; gap: 36px; }
+      .contact-inner { grid-template-columns: 1fr; }
+      .contact-links { max-width: 420px; }
+    }
+    @media (max-width: 560px) {
+      .nav { min-height: 64px; }
+      .brand > span:last-child { font-size: 14px; }
+      .nav-links { gap: 14px; }
+      .nav-links a { font-size: 11px; }
+      .nav-links a:nth-child(2) { display: none; }
+      .nav-contact { padding: 9px 10px; }
+      .hero-inner { padding-top: 76px; }
+      .hero::after { width: 320px; height: 320px; right: -200px; top: -70px; }
+      .hero-foot { font-size: 8px; letter-spacing: .04em; }
+      .section-heading { display: block; }
+      .section-intro { margin-top: 18px; }
+      .project-grid { grid-template-columns: 1fr; }
+      .project-card { min-height: 0; padding: 25px 0 28px; }
+      .project-card + .project-card { padding-left: 0; border-left: 0; }
+      .role { grid-template-columns: 1fr; gap: 8px; }
+      .role-date { order: 0; }
+      .role-main { order: 1; }
+      .role-tools { grid-column: 1; order: 2; }
+      .skill-row { grid-template-columns: 1fr; gap: 7px; }
+      .fact { grid-template-columns: 95px 1fr; gap: 12px; }
+      .footer-inner { flex-direction: column; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+      .reveal { opacity: 1; transform: none; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip" href="#contenido">Saltar al contenido</a>
+  <div class="progress" aria-hidden="true"></div>
+  <header class="nav-shell">
+    <nav class="nav wrap" aria-label="Navegación principal">
+      <a class="brand" href="#inicio" aria-label="Nicolás Fernández, inicio"><span class="brand-mark">NF</span><span>Nicolás Fernández</span></a>
+      <div class="nav-links">
+        <a href="#proyectos">Proyectos</a>
+        <a href="#experiencia">Experiencia</a>
+        <a class="nav-contact" href="#contacto">Contacto <span aria-hidden="true">↗</span></a>
+      </div>
+    </nav>
+  </header>
+  <main id="contenido">
+    <section class="hero" id="inicio" aria-labelledby="hero-title">
+      <div class="hero-inner wrap">
+        <div>
+          <p class="eyebrow">Software Engineer · AI Engineer</p>
+          <h1 id="hero-title">Tecnología útil.<br><span>Sistemas conectados.</span></h1>
+          <p class="hero-copy">Soy Nicolás, ingeniero de software en Buenos Aires. Trabajo entre productos full-stack, integraciones cloud e inteligencia artificial aplicada.</p>
+          <div class="hero-actions">
+            <a class="button button-lime" href="#proyectos">Explorar proyectos <span class="arrow" aria-hidden="true">↘</span></a>
+            <a class="button button-ghost" href="mailto:fernandeznicolas1801@gmail.com">Escribime <span class="arrow" aria-hidden="true">↗</span></a>
+          </div>
+        </div>
+        <aside class="hero-aside" aria-label="Áreas de trabajo">
+          <p class="aside-label">En qué estoy trabajando</p>
+          <ul class="focus-list">
+            <li>Agentes de IA y experiencias conversacionales</li>
+            <li>Plataformas web y APIs</li>
+            <li>Integraciones cloud y procesamiento de datos</li>
+          </ul>
+        </aside>
+      </div>
+      <div class="hero-foot wrap"><span>Buenos Aires, Argentina</span><span>Construir · integrar · mejorar</span></div>
+    </section>
+
+    <section class="projects wrap" id="proyectos" aria-labelledby="projects-title">
+      <div class="section-heading reveal">
+        <div><p class="section-kicker">01 / Selección</p><h2 id="projects-title">Proyectos con propósito.</h2></div>
+        <p class="section-intro">Productos y trabajos donde el software conecta necesidades reales con soluciones concretas.</p>
+      </div>
+      <article class="project-feature reveal">
+        <div class="project-main">
+          <div class="project-meta"><span class="pill lime">Proyecto personal</span><span class="pill">Producto digital · Salud</span></div>
+          <h3>HealthArchive</h3>
+          <p class="lead">Una plataforma para que consultorios médicos gestionen pacientes e historias clínicas digitales en un solo lugar, con herramientas pensadas para el trabajo cotidiano del equipo.</p>
+          <div class="project-links">
+            <a class="text-link" href="https://health-archive-teal.vercel.app/" target="_blank" rel="noopener noreferrer">Ver landing page <span aria-hidden="true">↗</span></a>
+            <a class="text-link" href="https://github.com/Nico-Fer/HealthArchive" target="_blank" rel="noopener noreferrer">Ver repositorio <span aria-hidden="true">↗</span></a>
+          </div>
+        </div>
+        <div class="project-detail">
+          <p class="detail-overline">Una consulta, de principio a fin</p>
+          <ul class="feature-list">
+            <li><b>01</b><span>Pacientes, coberturas y evoluciones clínicas en un único espacio.</span></li>
+            <li><b>02</b><span>Estudios adjuntos y exportación de la historia a PDF.</span></li>
+            <li><b>03</b><span>Accesos por consultorio y autoría visible en cada evolución.</span></li>
+          </ul>
+          <div><p class="stack-label">Tecnologías</p><p class="stack">React · TypeScript · ASP.NET · Entity Framework</p></div>
+        </div>
+      </article>
+      <div class="project-grid">
+        <article class="project-card reveal">
+          <div class="card-top"><span>Trabajo final · En desarrollo</span><span class="card-arrow" aria-hidden="true">↗</span></div>
+          <h3>Proyecto de tesis</h3>
+          <p>Proyecto en curso. El resumen público, el alcance y los detalles técnicos quedan pendientes de completar.</p>
+          <div class="card-tags"><span>UADE</span><span>Trabajo final</span><span>Información por actualizar</span></div>
+        </article>
+        <article class="project-card reveal">
+          <div class="card-top"><span>Proyecto académico · Ciencia de datos</span><a class="card-arrow" href="https://github.com/Nico-Fer/CienciaDeDatosTPO" target="_blank" rel="noopener noreferrer" aria-label="Abrir repositorio de Predicción de rotación laboral">↗</a></div>
+          <h3>Predicción de rotación laboral</h3>
+          <p>Análisis exploratorio y modelos de clasificación para estudiar la posible rotación de empleados. Incluye una API y una aplicación web para interactuar con los modelos.</p>
+          <div class="card-tags"><span>Python</span><span>Machine learning</span><span>API</span></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="experience" id="experiencia" aria-labelledby="experience-title">
+      <div class="wrap">
+        <div class="experience-head reveal">
+          <div><p class="section-kicker">02 / Trayectoria</p><h2 id="experience-title">Experiencia que cruza disciplinas.</h2></div>
+          <p class="section-intro">De la calidad de software y el desarrollo full-stack a la modernización, las integraciones cloud y la IA aplicada.</p>
+        </div>
+        <div class="timeline">
+          <article class="role reveal">
+            <div class="role-date">NOV 2025 — ACTUALIDAD</div>
+            <div class="role-main"><h3>AI Engineer</h3><p class="role-company">Avantic</p><ul class="role-points"><li>Desarrollo de agentes basados en LLM para ventas y atención al cliente, integrados con CRMs y WhatsApp Business.</li><li>Construcción de integraciones, webhooks y herramientas para administrar agentes y conversaciones.</li><li>Mejoras de confiabilidad y eficiencia: buffering de mensajes, circuit breakers y optimización de SQL Server.</li></ul></div>
+            <div class="role-tools"><span>OpenAI</span><span>WhatsApp API</span><span>ASP.NET MVC</span></div>
+          </article>
+          <article class="role reveal">
+            <div class="role-date">JUL 2025 — OCT 2025</div>
+            <div class="role-main"><h3>Integration Software Engineer</h3><p class="role-company">Chevron · Buenos Aires</p><ul class="role-points"><li>Integraciones para dispositivos de planta y sistemas IoT/SCADA, desde la ingesta hasta el procesamiento en tiempo real.</li><li>APIs y pipelines con Azure Event Hubs, Kafka, Redis, Azure Functions y Azure Data Explorer.</li></ul></div>
+            <div class="role-tools"><span>Azure</span><span>Kafka</span><span>Redis</span><span>SCADA</span></div>
+          </article>
+          <article class="role reveal">
+            <div class="role-date">AGO 2024 — JUN 2025</div>
+            <div class="role-main"><h3>Application Modernization Architect</h3><p class="role-company">Chevron · Buenos Aires</p><ul class="role-points"><li>Diseño de arquitecturas modernas y migración de aplicaciones legacy a Azure.</li><li>Implementación de estándares de seguridad con OAuth 2.0 y OpenID Connect.</li></ul></div>
+            <div class="role-tools"><span>Azure</span><span>OAuth 2.0</span><span>OIDC</span></div>
+          </article>
+          <article class="role reveal">
+            <div class="role-date">NOV 2023 — AGO 2024</div>
+            <div class="role-main"><h3>Software Engineer</h3><p class="role-company">Chevron · Buenos Aires</p><ul class="role-points"><li>Desarrollo de APIs REST y aplicaciones web; administración de seguridad de aplicaciones y bases de datos SQL Server.</li></ul></div>
+            <div class="role-tools"><span>.NET</span><span>React</span><span>TypeScript</span><span>SQL Server</span></div>
+          </article>
+          <article class="role reveal">
+            <div class="role-date">NOV 2022 — NOV 2023</div>
+            <div class="role-main"><h3>Application Engineer Intern</h3><p class="role-company">Chevron · Buenos Aires</p><ul class="role-points"><li>Aplicaciones e integraciones en el ecosistema Workday y automatización de procesos con Power Automate.</li></ul></div>
+            <div class="role-tools"><span>Workday Extend</span><span>Power Automate</span></div>
+          </article>
+          <article class="role reveal">
+            <div class="role-date">MAR 2022 — NOV 2022</div>
+            <div class="role-main"><h3>Software QA Tester</h3><p class="role-company">IBM · Buenos Aires</p><ul class="role-points"><li>Pruebas funcionales y soporte a procesos de aseguramiento de calidad de software.</li></ul></div>
+            <div class="role-tools"><span>QA</span><span>Selenium</span></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="skills wrap" aria-labelledby="skills-title">
+      <div class="skills-layout">
+        <div class="reveal"><p class="section-kicker">03 / Herramientas</p><h2 id="skills-title">Un stack para resolver el problema completo.</h2></div>
+        <div class="skills-list reveal">
+          <div class="skill-row"><h3>IA aplicada</h3><p>Agentes LLM · OpenAI · experiencias conversacionales · integración con CRM y canales de mensajería</p></div>
+          <div class="skill-row"><h3>Backend & APIs</h3><p>C# · ASP.NET · .NET · Entity Framework · APIs REST · SQL Server</p></div>
+          <div class="skill-row"><h3>Frontend</h3><p>React · TypeScript · JavaScript · HTML · CSS · Bootstrap</p></div>
+          <div class="skill-row"><h3>Cloud & datos</h3><p>Azure · AWS · Azure Functions · Event Hubs · Kafka · Redis · Azure Data Explorer</p></div>
+          <div class="skill-row"><h3>Prácticas</h3><p>OAuth 2.0 · OpenID Connect · integración de sistemas · automatización · testing</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="about wrap" aria-labelledby="about-title">
+      <div class="about-panel reveal">
+        <div><p class="section-kicker">04 / Un poco más</p><h2 id="about-title">Interés por entender cómo encajan las piezas.</h2><p class="about-copy">Me gusta trabajar en la intersección entre software, datos y necesidades de negocio: desde modernizar sistemas existentes hasta convertir nuevas ideas en herramientas que se puedan usar.</p></div>
+        <dl class="about-facts">
+          <div class="fact"><dt>Formación</dt><dd>Ingeniería Informática · UADE<br>2022–2026</dd></div>
+          <div class="fact"><dt>Ubicación</dt><dd>Buenos Aires, Argentina</dd></div>
+          <div class="fact"><dt>Idiomas</dt><dd>Español nativo · Inglés B2</dd></div>
+          <div class="fact"><dt>Certificaciones</dt><dd>Google AI Professional<br>AWS Academy · Cloud Architecting</dd></div>
+        </dl>
+      </div>
+    </section>
+
+    <section class="contact" id="contacto" aria-labelledby="contact-title">
+      <div class="contact-inner wrap">
+        <div class="reveal"><p class="section-kicker">05 / Contacto</p><h2 id="contact-title">Hablemos de ideas, productos y sistemas.</h2><p class="contact-copy">Para conversar sobre proyectos, tecnología o una oportunidad de colaboración.</p></div>
+        <div class="contact-links reveal">
+          <a href="mailto:fernandeznicolas1801@gmail.com"><span>Email</span><span>↗</span></a>
+          <a href="https://www.linkedin.com/in/fernandez-nicolas-esteban/" target="_blank" rel="noopener noreferrer"><span>LinkedIn</span><span>↗</span></a>
+          <a href="https://github.com/Nico-Fer" target="_blank" rel="noopener noreferrer"><span>GitHub</span><span>↗</span></a>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer><div class="footer-inner wrap"><span>© <span id="year">2026</span> Nicolás Fernández</span><span>Hecho con HTML, CSS y un poco de JavaScript.</span></div></footer>
+  <script>
+    (() => {
+      document.documentElement.classList.add('js');
+      const progress = document.querySelector('.progress');
+      const year = document.querySelector('#year');
+      year.textContent = new Date().getFullYear();
+      const updateProgress = () => {
+        const total = document.documentElement.scrollHeight - window.innerHeight;
+        progress.style.width = `${total > 0 ? (window.scrollY / total) * 100 : 0}%`;
+      };
+      window.addEventListener('scroll', updateProgress, { passive: true });
+      window.addEventListener('resize', updateProgress);
+      updateProgress();
+      if ('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('is-visible');
+              observer.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.08 });
+        document.querySelectorAll('.reveal').forEach((item) => observer.observe(item));
+      } else {
+        document.querySelectorAll('.reveal').forEach((item) => item.classList.add('is-visible'));
+      }
+    })();
+  </script>
+</body>
+</html>
