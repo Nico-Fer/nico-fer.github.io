@@ -4,9 +4,9 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#173b32">
-  <meta name="description" content="Nicolás Fernández — Software Engineer y AI Engineer en Buenos Aires. Experiencia en IA aplicada, plataformas web e integraciones cloud.">
+  <meta name="description" data-i18n="meta.desc" content="Nicolás Fernández — Software Engineer y AI Engineer en Buenos Aires. Experiencia en IA aplicada, plataformas web e integraciones cloud.">
   <meta property="og:title" content="Nicolás Fernández — Software & AI Engineer">
-  <meta property="og:description" content="IA aplicada, productos digitales e integraciones cloud.">
+  <meta property="og:description" data-i18n="meta.ogdesc" content="IA aplicada, productos digitales e integraciones cloud.">
   <meta property="og:type" content="website">
   <title>Nicolás Fernández — Software & AI Engineer</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -34,7 +34,7 @@
     html { scroll-behavior: smooth; scroll-padding-top: 86px; }
     body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(--sans); -webkit-font-smoothing: antialiased; }
     a { color: inherit; }
-    a:focus-visible, button:focus-visible { outline: 3px solid #91b83b; outline-offset: 4px; }
+    a:focus-visible, button:focus-visible, select:focus-visible { outline: 3px solid #91b83b; outline-offset: 4px; }
     ::selection { background: var(--lime); color: var(--ink); }
     .progress { position: fixed; z-index: 20; inset: 0 auto auto 0; width: 0; height: 3px; background: var(--lime); }
     .wrap { width: min(var(--max), calc(100% - var(--gutter) * 2)); margin-inline: auto; }
@@ -48,13 +48,15 @@
     .nav-links a { text-decoration: none; color: #435048; font-size: 13px; font-weight: 600; transition: color .2s ease; }
     .nav-links a:hover { color: #739221; }
     .nav-contact { padding: 10px 15px; border: 1px solid var(--line); border-radius: 3px; }
+    .lang-select { appearance: none; -webkit-appearance: none; -moz-appearance: none; background: transparent; border: 1px solid var(--line); border-radius: 3px; color: #435048; font: 11px var(--mono); padding: 9px 24px 9px 10px; cursor: pointer; background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' fill='none' stroke='%2365706a' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 9px center; }
+    .lang-select:hover { border-color: #657d32; }
     .hero { position: relative; overflow: hidden; background: var(--forest); color: var(--white); }
     .hero::after { content: ""; position: absolute; width: 510px; height: 510px; right: -110px; top: -208px; border: 1px solid rgba(216,242,120,.23); border-radius: 50%; box-shadow: 0 0 0 42px rgba(216,242,120,.035), 0 0 0 84px rgba(216,242,120,.03), 0 0 0 126px rgba(216,242,120,.025); pointer-events: none; }
     .hero-inner { position: relative; z-index: 1; min-height: 600px; padding-block: clamp(72px, 10vw, 126px) clamp(64px, 8vw, 96px); display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(250px, .7fr); align-items: end; gap: 8%; }
     .eyebrow { display: flex; align-items: center; gap: 10px; margin: 0 0 26px; color: var(--lime); font: 500 11px var(--mono); letter-spacing: .13em; text-transform: uppercase; }
     .eyebrow::before { content: ""; width: 24px; height: 1px; background: currentColor; }
     h1 { max-width: 780px; margin: 0; font: 600 clamp(54px, 8.2vw, 106px)/.99 var(--display); letter-spacing: -.075em; text-wrap: balance; }
-    h1 span { color: var(--lime); }
+    h1 span.accent { color: var(--lime); }
     .hero-copy { max-width: 580px; margin: 27px 0 0; color: rgba(251,251,247,.77); font-size: clamp(16px, 1.8vw, 19px); line-height: 1.65; }
     .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 31px; }
     .button { display: inline-flex; min-height: 48px; align-items: center; justify-content: center; gap: 14px; padding: 0 18px; border: 1px solid transparent; border-radius: 3px; text-decoration: none; font-size: 13px; font-weight: 700; transition: transform .2s ease, background .2s ease, color .2s ease; }
@@ -161,6 +163,7 @@
       .nav-links a { font-size: 11px; }
       .nav-links a:nth-child(2) { display: none; }
       .nav-contact { padding: 9px 10px; }
+      .lang-select { padding: 7px 20px 7px 8px; background-position: right 6px center; }
       .hero-inner { padding-top: 76px; }
       .hero::after { width: 320px; height: 320px; right: -200px; top: -70px; }
       .hero-foot { font-size: 8px; letter-spacing: .04em; }
@@ -180,20 +183,28 @@
     @media (prefers-reduced-motion: reduce) {
       html { scroll-behavior: auto; }
       *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
-      .reveal { opacity: 1; transform: none; }
+      html.js .reveal { opacity: 1; transform: none; }
     }
   </style>
 </head>
 <body>
-  <a class="skip" href="#contenido">Saltar al contenido</a>
+  <a class="skip" href="#contenido" data-i18n="skip">Saltar al contenido</a>
   <div class="progress" aria-hidden="true"></div>
   <header class="nav-shell">
-    <nav class="nav wrap" aria-label="Navegación principal">
-      <a class="brand" href="#inicio" aria-label="Nicolás Fernández, inicio"><span class="brand-mark">NF</span><span>Nicolás Fernández</span></a>
+    <nav class="nav wrap" aria-label="Navegación principal" data-i18n-aria="nav.aria">
+      <a class="brand" href="#inicio" aria-label="Nicolás Fernández, inicio" data-i18n-aria="brand.aria"><span class="brand-mark">NF</span><span>Nicolás Fernández</span></a>
       <div class="nav-links">
-        <a href="#proyectos">Proyectos</a>
-        <a href="#experiencia">Experiencia</a>
-        <a class="nav-contact" href="#contacto">Contacto <span aria-hidden="true">↗</span></a>
+        <a href="#proyectos" data-i18n="nav.projects">Proyectos</a>
+        <a href="#experiencia" data-i18n="nav.experience">Experiencia</a>
+        <a class="nav-contact" href="#contacto"><span data-i18n="nav.contact">Contacto</span> <span aria-hidden="true">↗</span></a>
+        <select id="lang-switch" class="lang-select" aria-label="Cambiar idioma" data-i18n-aria="lang.label">
+          <option value="es">Español</option>
+          <option value="en">English</option>
+          <option value="fr">Français</option>
+          <option value="de">Deutsch</option>
+          <option value="pt">Português</option>
+          <option value="zh">中文</option>
+        </select>
       </div>
     </nav>
   </header>
@@ -202,61 +213,60 @@
       <div class="hero-inner wrap">
         <div>
           <p class="eyebrow">Software Engineer · AI Engineer</p>
-          <h1 id="hero-title">Tecnología útil.<br><span>Sistemas conectados.</span></h1>
-          <p class="hero-copy">Soy Nicolás, ingeniero de software en Buenos Aires. Trabajo entre productos full-stack, integraciones cloud e inteligencia artificial aplicada.</p>
+          <h1 id="hero-title"><span data-i18n="hero.h1a">Tecnología útil.</span><br><span class="accent" data-i18n="hero.h1b">Sistemas conectados.</span></h1>
+          <p class="hero-copy" data-i18n="hero.copy">Soy Nicolás, ingeniero de software en Buenos Aires. Trabajo entre productos full-stack, integraciones cloud e inteligencia artificial aplicada.</p>
           <div class="hero-actions">
-            <a class="button button-lime" href="#proyectos">Explorar proyectos <span class="arrow" aria-hidden="true">↘</span></a>
-            <a class="button button-ghost" href="mailto:fernandeznicolas1801@gmail.com">Escribime <span class="arrow" aria-hidden="true">↗</span></a>
+            <a class="button button-lime" href="#proyectos"><span data-i18n="hero.cta1">Explorar proyectos</span> <span class="arrow" aria-hidden="true">↘</span></a>
+            <a class="button button-ghost" href="mailto:fernandeznicolas1801@gmail.com"><span data-i18n="hero.cta2">Escribime</span> <span class="arrow" aria-hidden="true">↗</span></a>
           </div>
         </div>
-        <aside class="hero-aside" aria-label="Áreas de trabajo">
-          <p class="aside-label">En qué estoy trabajando</p>
+        <aside class="hero-aside" aria-label="Áreas de trabajo" data-i18n-aria="hero.aside.aria">
+          <p class="aside-label" data-i18n="hero.aside.label">En qué estoy trabajando</p>
           <ul class="focus-list">
-            <li>Agentes de IA y experiencias conversacionales</li>
-            <li>Plataformas web y APIs</li>
-            <li>Integraciones cloud y procesamiento de datos</li>
+            <li data-i18n="hero.focus1">Agentes de IA y experiencias conversacionales</li>
+            <li data-i18n="hero.focus2">Plataformas web y APIs</li>
+            <li data-i18n="hero.focus3">Integraciones cloud y procesamiento de datos</li>
           </ul>
         </aside>
       </div>
-      <div class="hero-foot wrap"><span>Buenos Aires, Argentina</span><span>Construir · integrar · mejorar</span></div>
+      <div class="hero-foot wrap"><span>Buenos Aires, Argentina</span><span data-i18n="hero.foot">Construir · integrar · mejorar</span></div>
     </section>
 
     <section class="projects wrap" id="proyectos" aria-labelledby="projects-title">
       <div class="section-heading reveal">
-        <div><p class="section-kicker">01 / Selección</p><h2 id="projects-title">Proyectos con propósito.</h2></div>
-        <p class="section-intro">Productos y trabajos donde el software conecta necesidades reales con soluciones concretas.</p>
+        <div><p class="section-kicker" data-i18n="projects.kicker">01 / Selección</p><h2 id="projects-title" data-i18n="projects.h2">Proyectos con propósito.</h2></div>
+        <p class="section-intro" data-i18n="projects.intro">Productos y trabajos donde el software conecta necesidades reales con soluciones concretas.</p>
       </div>
       <article class="project-feature reveal">
         <div class="project-main">
-          <div class="project-meta"><span class="pill lime">Proyecto personal</span><span class="pill">Producto digital · Salud</span></div>
+          <div class="project-meta"><span class="pill lime" data-i18n="ha.pill1">Proyecto personal</span><span class="pill" data-i18n="ha.pill2">Producto digital · Salud</span></div>
           <h3>HealthArchive</h3>
-          <p class="lead">Una plataforma para que consultorios médicos gestionen pacientes e historias clínicas digitales en un solo lugar, con herramientas pensadas para el trabajo cotidiano del equipo.</p>
+          <p class="lead" data-i18n="ha.lead">Una plataforma para que consultorios médicos gestionen pacientes e historias clínicas digitales en un solo lugar, con herramientas pensadas para el trabajo cotidiano del equipo.</p>
           <div class="project-links">
-            <a class="text-link" href="https://health-archive-teal.vercel.app/" target="_blank" rel="noopener noreferrer">Ver landing page <span aria-hidden="true">↗</span></a>
-            <a class="text-link" href="https://github.com/Nico-Fer/HealthArchive" target="_blank" rel="noopener noreferrer">Ver repositorio <span aria-hidden="true">↗</span></a>
+            <a class="text-link" href="https://health-archive-teal.vercel.app/" target="_blank" rel="noopener noreferrer"><span data-i18n="ha.link">Ver landing page</span> <span aria-hidden="true">↗</span></a>
           </div>
         </div>
         <div class="project-detail">
-          <p class="detail-overline">Una consulta, de principio a fin</p>
+          <p class="detail-overline" data-i18n="ha.overline">Una consulta, de principio a fin</p>
           <ul class="feature-list">
-            <li><b>01</b><span>Pacientes, coberturas y evoluciones clínicas en un único espacio.</span></li>
-            <li><b>02</b><span>Estudios adjuntos y exportación de la historia a PDF.</span></li>
-            <li><b>03</b><span>Accesos por consultorio y autoría visible en cada evolución.</span></li>
+            <li><b>01</b><span data-i18n="ha.f1">Pacientes, coberturas y evoluciones clínicas en un único espacio.</span></li>
+            <li><b>02</b><span data-i18n="ha.f2">Estudios adjuntos y exportación de la historia a PDF.</span></li>
+            <li><b>03</b><span data-i18n="ha.f3">Accesos por consultorio y autoría visible en cada evolución.</span></li>
           </ul>
-          <div><p class="stack-label">Tecnologías</p><p class="stack">React · TypeScript · ASP.NET · Entity Framework</p></div>
+          <div><p class="stack-label" data-i18n="ha.stacklabel">Tecnologías</p><p class="stack">React · TypeScript · ASP.NET · Entity Framework</p></div>
         </div>
       </article>
       <div class="project-grid">
         <article class="project-card reveal">
-          <div class="card-top"><span>Trabajo final · En desarrollo</span><span class="card-arrow" aria-hidden="true">↗</span></div>
-          <h3>Proyecto de tesis</h3>
-          <p>Proyecto en curso. El resumen público, el alcance y los detalles técnicos quedan pendientes de completar.</p>
-          <div class="card-tags"><span>UADE</span><span>Trabajo final</span><span>Información por actualizar</span></div>
+          <div class="card-top"><span data-i18n="tesis.top">Trabajo final · En desarrollo</span><span class="card-arrow" aria-hidden="true">↗</span></div>
+          <h3 data-i18n="tesis.h3">Proyecto de tesis</h3>
+          <p data-i18n="tesis.p">Proyecto en curso. El resumen público, el alcance y los detalles técnicos quedan pendientes de completar.</p>
+          <div class="card-tags"><span>UADE</span><span data-i18n="tesis.tag2">Trabajo final</span><span data-i18n="tesis.tag3">Información por actualizar</span></div>
         </article>
         <article class="project-card reveal">
-          <div class="card-top"><span>Proyecto académico · Ciencia de datos</span><a class="card-arrow" href="https://github.com/Nico-Fer/CienciaDeDatosTPO" target="_blank" rel="noopener noreferrer" aria-label="Abrir repositorio de Predicción de rotación laboral">↗</a></div>
-          <h3>Predicción de rotación laboral</h3>
-          <p>Análisis exploratorio y modelos de clasificación para estudiar la posible rotación de empleados. Incluye una API y una aplicación web para interactuar con los modelos.</p>
+          <div class="card-top"><span data-i18n="rot.top">Proyecto académico · Ciencia de datos</span><a class="card-arrow" href="https://github.com/Nico-Fer/CienciaDeDatosTPO" target="_blank" rel="noopener noreferrer" aria-label="Abrir repositorio de Predicción de rotación laboral" data-i18n-aria="rot.aria">↗</a></div>
+          <h3 data-i18n="rot.h3">Predicción de rotación laboral</h3>
+          <p data-i18n="rot.p">Análisis exploratorio y modelos de clasificación para estudiar la posible rotación de empleados. Incluye una API y una aplicación web para interactuar con los modelos.</p>
           <div class="card-tags"><span>Python</span><span>Machine learning</span><span>API</span></div>
         </article>
       </div>
@@ -265,38 +275,38 @@
     <section class="experience" id="experiencia" aria-labelledby="experience-title">
       <div class="wrap">
         <div class="experience-head reveal">
-          <div><p class="section-kicker">02 / Trayectoria</p><h2 id="experience-title">Experiencia que cruza disciplinas.</h2></div>
-          <p class="section-intro">De la calidad de software y el desarrollo full-stack a la modernización, las integraciones cloud y la IA aplicada.</p>
+          <div><p class="section-kicker" data-i18n="experience.kicker">02 / Trayectoria</p><h2 id="experience-title" data-i18n="experience.h2">Experiencia que cruza disciplinas.</h2></div>
+          <p class="section-intro" data-i18n="experience.intro">De la calidad de software y el desarrollo full-stack a la modernización, las integraciones cloud y la IA aplicada.</p>
         </div>
         <div class="timeline">
           <article class="role reveal">
-            <div class="role-date">NOV 2025 — ACTUALIDAD</div>
-            <div class="role-main"><h3>AI Engineer</h3><p class="role-company">Avantic</p><ul class="role-points"><li>Desarrollo de agentes basados en LLM para ventas y atención al cliente, integrados con CRMs y WhatsApp Business.</li><li>Construcción de integraciones, webhooks y herramientas para administrar agentes y conversaciones.</li><li>Mejoras de confiabilidad y eficiencia: buffering de mensajes, circuit breakers y optimización de SQL Server.</li></ul></div>
+            <div class="role-date" data-i18n="role1.date">NOV 2025 — ACTUALIDAD</div>
+            <div class="role-main"><h3>AI Engineer</h3><p class="role-company">Avantic</p><ul class="role-points"><li data-i18n="role1.p1">Desarrollo de agentes basados en LLM para ventas y atención al cliente, integrados con CRMs y WhatsApp Business.</li><li data-i18n="role1.p2">Construcción de integraciones, webhooks y herramientas para administrar agentes y conversaciones.</li><li data-i18n="role1.p3">Mejoras de confiabilidad y eficiencia: buffering de mensajes, circuit breakers y optimización de SQL Server.</li></ul></div>
             <div class="role-tools"><span>OpenAI</span><span>WhatsApp API</span><span>ASP.NET MVC</span></div>
           </article>
           <article class="role reveal">
-            <div class="role-date">JUL 2025 — OCT 2025</div>
-            <div class="role-main"><h3>Integration Software Engineer</h3><p class="role-company">Chevron · Buenos Aires</p><ul class="role-points"><li>Integraciones para dispositivos de planta y sistemas IoT/SCADA, desde la ingesta hasta el procesamiento en tiempo real.</li><li>APIs y pipelines con Azure Event Hubs, Kafka, Redis, Azure Functions y Azure Data Explorer.</li></ul></div>
+            <div class="role-date" data-i18n="role2.date">JUL 2025 — OCT 2025</div>
+            <div class="role-main"><h3>Integration Software Engineer</h3><p class="role-company">Chevron · Buenos Aires</p><ul class="role-points"><li data-i18n="role2.p1">Integraciones para dispositivos de planta y sistemas IoT/SCADA, desde la ingesta hasta el procesamiento en tiempo real.</li><li data-i18n="role2.p2">APIs y pipelines con Azure Event Hubs, Kafka, Redis, Azure Functions y Azure Data Explorer.</li></ul></div>
             <div class="role-tools"><span>Azure</span><span>Kafka</span><span>Redis</span><span>SCADA</span></div>
           </article>
           <article class="role reveal">
-            <div class="role-date">AGO 2024 — JUN 2025</div>
-            <div class="role-main"><h3>Application Modernization Architect</h3><p class="role-company">Chevron · Buenos Aires</p><ul class="role-points"><li>Diseño de arquitecturas modernas y migración de aplicaciones legacy a Azure.</li><li>Implementación de estándares de seguridad con OAuth 2.0 y OpenID Connect.</li></ul></div>
+            <div class="role-date" data-i18n="role3.date">AGO 2024 — JUN 2025</div>
+            <div class="role-main"><h3>Application Modernization Architect</h3><p class="role-company">Chevron · Buenos Aires</p><ul class="role-points"><li data-i18n="role3.p1">Diseño de arquitecturas modernas y migración de aplicaciones legacy a Azure.</li><li data-i18n="role3.p2">Implementación de estándares de seguridad con OAuth 2.0 y OpenID Connect.</li></ul></div>
             <div class="role-tools"><span>Azure</span><span>OAuth 2.0</span><span>OIDC</span></div>
           </article>
           <article class="role reveal">
-            <div class="role-date">NOV 2023 — AGO 2024</div>
-            <div class="role-main"><h3>Software Engineer</h3><p class="role-company">Chevron · Buenos Aires</p><ul class="role-points"><li>Desarrollo de APIs REST y aplicaciones web; administración de seguridad de aplicaciones y bases de datos SQL Server.</li></ul></div>
+            <div class="role-date" data-i18n="role4.date">NOV 2023 — AGO 2024</div>
+            <div class="role-main"><h3>Software Engineer</h3><p class="role-company">Chevron · Buenos Aires</p><ul class="role-points"><li data-i18n="role4.p1">Desarrollo de APIs REST y aplicaciones web; administración de seguridad de aplicaciones y bases de datos SQL Server.</li></ul></div>
             <div class="role-tools"><span>.NET</span><span>React</span><span>TypeScript</span><span>SQL Server</span></div>
           </article>
           <article class="role reveal">
-            <div class="role-date">NOV 2022 — NOV 2023</div>
-            <div class="role-main"><h3>Application Engineer Intern</h3><p class="role-company">Chevron · Buenos Aires</p><ul class="role-points"><li>Aplicaciones e integraciones en el ecosistema Workday y automatización de procesos con Power Automate.</li></ul></div>
+            <div class="role-date" data-i18n="role5.date">NOV 2022 — NOV 2023</div>
+            <div class="role-main"><h3>Application Engineer Intern</h3><p class="role-company">Chevron · Buenos Aires</p><ul class="role-points"><li data-i18n="role5.p1">Aplicaciones e integraciones en el ecosistema Workday y automatización de procesos con Power Automate.</li></ul></div>
             <div class="role-tools"><span>Workday Extend</span><span>Power Automate</span></div>
           </article>
           <article class="role reveal">
-            <div class="role-date">MAR 2022 — NOV 2022</div>
-            <div class="role-main"><h3>Software QA Tester</h3><p class="role-company">IBM · Buenos Aires</p><ul class="role-points"><li>Pruebas funcionales y soporte a procesos de aseguramiento de calidad de software.</li></ul></div>
+            <div class="role-date" data-i18n="role6.date">MAR 2022 — NOV 2022</div>
+            <div class="role-main"><h3>Software QA Tester</h3><p class="role-company">IBM · Buenos Aires</p><ul class="role-points"><li data-i18n="role6.p1">Pruebas funcionales y soporte a procesos de aseguramiento de calidad de software.</li></ul></div>
             <div class="role-tools"><span>QA</span><span>Selenium</span></div>
           </article>
         </div>
@@ -305,32 +315,32 @@
 
     <section class="skills wrap" aria-labelledby="skills-title">
       <div class="skills-layout">
-        <div class="reveal"><p class="section-kicker">03 / Herramientas</p><h2 id="skills-title">Un stack para resolver el problema completo.</h2></div>
+        <div class="reveal"><p class="section-kicker" data-i18n="skills.kicker">03 / Herramientas</p><h2 id="skills-title" data-i18n="skills.h2">Un stack para resolver el problema completo.</h2></div>
         <div class="skills-list reveal">
-          <div class="skill-row"><h3>IA aplicada</h3><p>Agentes LLM · OpenAI · experiencias conversacionales · integración con CRM y canales de mensajería</p></div>
-          <div class="skill-row"><h3>Backend & APIs</h3><p>C# · ASP.NET · .NET · Entity Framework · APIs REST · SQL Server</p></div>
-          <div class="skill-row"><h3>Frontend</h3><p>React · TypeScript · JavaScript · HTML · CSS · Bootstrap</p></div>
-          <div class="skill-row"><h3>Cloud & datos</h3><p>Azure · AWS · Azure Functions · Event Hubs · Kafka · Redis · Azure Data Explorer</p></div>
-          <div class="skill-row"><h3>Prácticas</h3><p>OAuth 2.0 · OpenID Connect · integración de sistemas · automatización · testing</p></div>
+          <div class="skill-row"><h3 data-i18n="skills.s1h3">IA aplicada</h3><p data-i18n="skills.s1p">Agentes LLM · OpenAI · experiencias conversacionales · integración con CRM y canales de mensajería</p></div>
+          <div class="skill-row"><h3 data-i18n="skills.s2h3">Backend & APIs</h3><p>C# · ASP.NET · .NET · Entity Framework · APIs REST · SQL Server</p></div>
+          <div class="skill-row"><h3 data-i18n="skills.s3h3">Frontend</h3><p>React · TypeScript · JavaScript · HTML · CSS · Bootstrap</p></div>
+          <div class="skill-row"><h3 data-i18n="skills.s4h3">Cloud & datos</h3><p>Azure · AWS · Azure Functions · Event Hubs · Kafka · Redis · Azure Data Explorer</p></div>
+          <div class="skill-row"><h3 data-i18n="skills.s5h3">Prácticas</h3><p data-i18n="skills.s5p">OAuth 2.0 · OpenID Connect · integración de sistemas · automatización · testing</p></div>
         </div>
       </div>
     </section>
 
     <section class="about wrap" aria-labelledby="about-title">
       <div class="about-panel reveal">
-        <div><p class="section-kicker">04 / Un poco más</p><h2 id="about-title">Interés por entender cómo encajan las piezas.</h2><p class="about-copy">Me gusta trabajar en la intersección entre software, datos y necesidades de negocio: desde modernizar sistemas existentes hasta convertir nuevas ideas en herramientas que se puedan usar.</p></div>
+        <div><p class="section-kicker" data-i18n="about.kicker">04 / Un poco más</p><h2 id="about-title" data-i18n="about.h2">Interés por entender cómo encajan las piezas.</h2><p class="about-copy" data-i18n="about.copy">Me gusta trabajar en la intersección entre software, datos y necesidades de negocio: desde modernizar sistemas existentes hasta convertir nuevas ideas en herramientas que se puedan usar.</p></div>
         <dl class="about-facts">
-          <div class="fact"><dt>Formación</dt><dd>Ingeniería Informática · UADE<br>2022–2026</dd></div>
-          <div class="fact"><dt>Ubicación</dt><dd>Buenos Aires, Argentina</dd></div>
-          <div class="fact"><dt>Idiomas</dt><dd>Español nativo · Inglés B2</dd></div>
-          <div class="fact"><dt>Certificaciones</dt><dd>Google AI Professional<br>AWS Academy · Cloud Architecting</dd></div>
+          <div class="fact"><dt data-i18n="about.f1dt">Formación</dt><dd data-i18n-html="about.f1dd">Ingeniería Informática · UADE<br>2022–2026</dd></div>
+          <div class="fact"><dt data-i18n="about.f2dt">Ubicación</dt><dd data-i18n="about.f2dd">Buenos Aires, Argentina</dd></div>
+          <div class="fact"><dt data-i18n="about.f3dt">Idiomas</dt><dd data-i18n="about.f3dd">Español nativo · Inglés B2</dd></div>
+          <div class="fact"><dt data-i18n="about.f4dt">Certificaciones</dt><dd data-i18n-html="about.f4dd">Google AI Professional<br>AWS Academy · Cloud Architecting</dd></div>
         </dl>
       </div>
     </section>
 
     <section class="contact" id="contacto" aria-labelledby="contact-title">
       <div class="contact-inner wrap">
-        <div class="reveal"><p class="section-kicker">05 / Contacto</p><h2 id="contact-title">Hablemos de ideas, productos y sistemas.</h2><p class="contact-copy">Para conversar sobre proyectos, tecnología o una oportunidad de colaboración.</p></div>
+        <div class="reveal"><p class="section-kicker" data-i18n="contact.kicker">05 / Contacto</p><h2 id="contact-title" data-i18n="contact.h2">Hablemos de ideas, productos y sistemas.</h2><p class="contact-copy" data-i18n="contact.copy">Para conversar sobre proyectos, tecnología o una oportunidad de colaboración.</p></div>
         <div class="contact-links reveal">
           <a href="mailto:fernandeznicolas1801@gmail.com"><span>Email</span><span>↗</span></a>
           <a href="https://www.linkedin.com/in/fernandez-nicolas-esteban/" target="_blank" rel="noopener noreferrer"><span>LinkedIn</span><span>↗</span></a>
@@ -339,10 +349,561 @@
       </div>
     </section>
   </main>
-  <footer><div class="footer-inner wrap"><span>© <span id="year">2026</span> Nicolás Fernández</span><span>Hecho con HTML, CSS y un poco de JavaScript.</span></div></footer>
+  <footer><div class="footer-inner wrap"><span>© <span id="year">2026</span> Nicolás Fernández</span><span data-i18n="footer.made">Hecho con HTML, CSS y un poco de JavaScript.</span></div></footer>
   <script>
     (() => {
       document.documentElement.classList.add('js');
+      const I18N = {
+        es: {
+          "meta.desc": "Nicolás Fernández — Software Engineer y AI Engineer en Buenos Aires. Experiencia en IA aplicada, plataformas web e integraciones cloud.",
+          "meta.ogdesc": "IA aplicada, productos digitales e integraciones cloud.",
+          "skip": "Saltar al contenido",
+          "nav.aria": "Navegación principal",
+          "brand.aria": "Nicolás Fernández, inicio",
+          "nav.projects": "Proyectos",
+          "nav.experience": "Experiencia",
+          "nav.contact": "Contacto",
+          "hero.h1a": "Tecnología útil.",
+          "hero.h1b": "Sistemas conectados.",
+          "hero.copy": "Soy Nicolás, ingeniero de software en Buenos Aires. Trabajo entre productos full-stack, integraciones cloud e inteligencia artificial aplicada.",
+          "hero.cta1": "Explorar proyectos",
+          "hero.cta2": "Escribime",
+          "hero.aside.aria": "Áreas de trabajo",
+          "hero.aside.label": "En qué estoy trabajando",
+          "hero.focus1": "Agentes de IA y experiencias conversacionales",
+          "hero.focus2": "Plataformas web y APIs",
+          "hero.focus3": "Integraciones cloud y procesamiento de datos",
+          "hero.foot": "Construir · integrar · mejorar",
+          "projects.kicker": "01 / Selección",
+          "projects.h2": "Proyectos con propósito.",
+          "projects.intro": "Productos y trabajos donde el software conecta necesidades reales con soluciones concretas.",
+          "ha.pill1": "Proyecto personal",
+          "ha.pill2": "Producto digital · Salud",
+          "ha.lead": "Una plataforma para que consultorios médicos gestionen pacientes e historias clínicas digitales en un solo lugar, con herramientas pensadas para el trabajo cotidiano del equipo.",
+          "ha.link": "Ver landing page",
+          "ha.overline": "Una consulta, de principio a fin",
+          "ha.f1": "Pacientes, coberturas y evoluciones clínicas en un único espacio.",
+          "ha.f2": "Estudios adjuntos y exportación de la historia a PDF.",
+          "ha.f3": "Accesos por consultorio y autoría visible en cada evolución.",
+          "ha.stacklabel": "Tecnologías",
+          "tesis.top": "Trabajo final · En desarrollo",
+          "tesis.h3": "Proyecto de tesis",
+          "tesis.p": "Proyecto en curso. El resumen público, el alcance y los detalles técnicos quedan pendientes de completar.",
+          "tesis.tag2": "Trabajo final",
+          "tesis.tag3": "Información por actualizar",
+          "rot.top": "Proyecto académico · Ciencia de datos",
+          "rot.aria": "Abrir repositorio de Predicción de rotación laboral",
+          "rot.h3": "Predicción de rotación laboral",
+          "rot.p": "Análisis exploratorio y modelos de clasificación para estudiar la posible rotación de empleados. Incluye una API y una aplicación web para interactuar con los modelos.",
+          "experience.kicker": "02 / Trayectoria",
+          "experience.h2": "Experiencia que cruza disciplinas.",
+          "experience.intro": "De la calidad de software y el desarrollo full-stack a la modernización, las integraciones cloud y la IA aplicada.",
+          "role1.date": "NOV 2025 — ACTUALIDAD",
+          "role1.p1": "Desarrollo de agentes basados en LLM para ventas y atención al cliente, integrados con CRMs y WhatsApp Business.",
+          "role1.p2": "Construcción de integraciones, webhooks y herramientas para administrar agentes y conversaciones.",
+          "role1.p3": "Mejoras de confiabilidad y eficiencia: buffering de mensajes, circuit breakers y optimización de SQL Server.",
+          "role2.date": "JUL 2025 — OCT 2025",
+          "role2.p1": "Integraciones para dispositivos de planta y sistemas IoT/SCADA, desde la ingesta hasta el procesamiento en tiempo real.",
+          "role2.p2": "APIs y pipelines con Azure Event Hubs, Kafka, Redis, Azure Functions y Azure Data Explorer.",
+          "role3.date": "AGO 2024 — JUN 2025",
+          "role3.p1": "Diseño de arquitecturas modernas y migración de aplicaciones legacy a Azure.",
+          "role3.p2": "Implementación de estándares de seguridad con OAuth 2.0 y OpenID Connect.",
+          "role4.date": "NOV 2023 — AGO 2024",
+          "role4.p1": "Desarrollo de APIs REST y aplicaciones web; administración de seguridad de aplicaciones y bases de datos SQL Server.",
+          "role5.date": "NOV 2022 — NOV 2023",
+          "role5.p1": "Aplicaciones e integraciones en el ecosistema Workday y automatización de procesos con Power Automate.",
+          "role6.date": "MAR 2022 — NOV 2022",
+          "role6.p1": "Pruebas funcionales y soporte a procesos de aseguramiento de calidad de software.",
+          "skills.kicker": "03 / Herramientas",
+          "skills.h2": "Un stack para resolver el problema completo.",
+          "skills.s1h3": "IA aplicada",
+          "skills.s1p": "Agentes LLM · OpenAI · experiencias conversacionales · integración con CRM y canales de mensajería",
+          "skills.s2h3": "Backend & APIs",
+          "skills.s3h3": "Frontend",
+          "skills.s4h3": "Cloud & datos",
+          "skills.s5h3": "Prácticas",
+          "skills.s5p": "OAuth 2.0 · OpenID Connect · integración de sistemas · automatización · testing",
+          "about.kicker": "04 / Un poco más",
+          "about.h2": "Interés por entender cómo encajan las piezas.",
+          "about.copy": "Me gusta trabajar en la intersección entre software, datos y necesidades de negocio: desde modernizar sistemas existentes hasta convertir nuevas ideas en herramientas que se puedan usar.",
+          "about.f1dt": "Formación",
+          "about.f1dd": "Ingeniería Informática · UADE<br>2022–2026",
+          "about.f2dt": "Ubicación",
+          "about.f2dd": "Buenos Aires, Argentina",
+          "about.f3dt": "Idiomas",
+          "about.f3dd": "Español nativo · Inglés B2",
+          "about.f4dt": "Certificaciones",
+          "about.f4dd": "Google AI Professional<br>AWS Academy · Cloud Architecting",
+          "contact.kicker": "05 / Contacto",
+          "contact.h2": "Hablemos de ideas, productos y sistemas.",
+          "contact.copy": "Para conversar sobre proyectos, tecnología o una oportunidad de colaboración.",
+          "footer.made": "Hecho con HTML, CSS y un poco de JavaScript.",
+          "lang.label": "Cambiar idioma"
+        },
+        en: {
+          "meta.desc": "Nicolás Fernández — Software Engineer and AI Engineer in Buenos Aires. Experience in applied AI, web platforms and cloud integrations.",
+          "meta.ogdesc": "Applied AI, digital products and cloud integrations.",
+          "skip": "Skip to content",
+          "nav.aria": "Main navigation",
+          "brand.aria": "Nicolás Fernández, home",
+          "nav.projects": "Projects",
+          "nav.experience": "Experience",
+          "nav.contact": "Contact",
+          "hero.h1a": "Useful technology.",
+          "hero.h1b": "Connected systems.",
+          "hero.copy": "I'm Nicolás, a software engineer in Buenos Aires. I work across full-stack products, cloud integrations and applied artificial intelligence.",
+          "hero.cta1": "Explore projects",
+          "hero.cta2": "Write to me",
+          "hero.aside.aria": "Areas of work",
+          "hero.aside.label": "What I'm working on",
+          "hero.focus1": "AI agents and conversational experiences",
+          "hero.focus2": "Web platforms and APIs",
+          "hero.focus3": "Cloud integrations and data processing",
+          "hero.foot": "Build · integrate · improve",
+          "projects.kicker": "01 / Selection",
+          "projects.h2": "Projects with purpose.",
+          "projects.intro": "Products and work where software connects real needs with concrete solutions.",
+          "ha.pill1": "Personal project",
+          "ha.pill2": "Digital product · Health",
+          "ha.lead": "A platform for medical practices to manage patients and digital medical records in one place, with tools designed for the team's day-to-day work.",
+          "ha.link": "View landing page",
+          "ha.overline": "A consultation, end to end",
+          "ha.f1": "Patients, coverages and clinical notes in a single space.",
+          "ha.f2": "Attached studies and PDF export of the record.",
+          "ha.f3": "Per-practice access and visible authorship on every note.",
+          "ha.stacklabel": "Technologies",
+          "tesis.top": "Final project · In development",
+          "tesis.h3": "Thesis project",
+          "tesis.p": "Work in progress. The public summary, scope and technical details are still to be completed.",
+          "tesis.tag2": "Final project",
+          "tesis.tag3": "To be updated",
+          "rot.top": "Academic project · Data science",
+          "rot.aria": "Open employee attrition prediction repository",
+          "rot.h3": "Employee attrition prediction",
+          "rot.p": "Exploratory analysis and classification models to study potential employee turnover. Includes an API and a web app to interact with the models.",
+          "experience.kicker": "02 / Experience",
+          "experience.h2": "Experience that crosses disciplines.",
+          "experience.intro": "From software quality and full-stack development to modernization, cloud integrations and applied AI.",
+          "role1.date": "NOV 2025 — PRESENT",
+          "role1.p1": "Development of LLM-based agents for sales and customer service, integrated with CRMs and WhatsApp Business.",
+          "role1.p2": "Building integrations, webhooks and tools to manage agents and conversations.",
+          "role1.p3": "Reliability and efficiency improvements: message buffering, circuit breakers and SQL Server tuning.",
+          "role2.date": "JUL 2025 — OCT 2025",
+          "role2.p1": "Integrations for plant devices and IoT/SCADA systems, from ingestion to real-time processing.",
+          "role2.p2": "APIs and pipelines with Azure Event Hubs, Kafka, Redis, Azure Functions and Azure Data Explorer.",
+          "role3.date": "AUG 2024 — JUN 2025",
+          "role3.p1": "Designing modern architectures and migrating legacy applications to Azure.",
+          "role3.p2": "Implementing security standards with OAuth 2.0 and OpenID Connect.",
+          "role4.date": "NOV 2023 — AUG 2024",
+          "role4.p1": "Developing REST APIs and web applications; managing application security and SQL Server databases.",
+          "role5.date": "NOV 2022 — NOV 2023",
+          "role5.p1": "Applications and integrations in the Workday ecosystem and process automation with Power Automate.",
+          "role6.date": "MAR 2022 — NOV 2022",
+          "role6.p1": "Functional testing and support for software quality assurance processes.",
+          "skills.kicker": "03 / Tools",
+          "skills.h2": "A stack to solve the whole problem.",
+          "skills.s1h3": "Applied AI",
+          "skills.s1p": "LLM agents · OpenAI · conversational experiences · CRM and messaging-channel integration",
+          "skills.s2h3": "Backend & APIs",
+          "skills.s3h3": "Frontend",
+          "skills.s4h3": "Cloud & data",
+          "skills.s5h3": "Practices",
+          "skills.s5p": "OAuth 2.0 · OpenID Connect · system integration · automation · testing",
+          "about.kicker": "04 / A little more",
+          "about.h2": "An interest in understanding how the pieces fit together.",
+          "about.copy": "I enjoy working at the intersection of software, data and business needs: from modernizing existing systems to turning new ideas into usable tools.",
+          "about.f1dt": "Education",
+          "about.f1dd": "Computer Engineering · UADE<br>2022–2026",
+          "about.f2dt": "Location",
+          "about.f2dd": "Buenos Aires, Argentina",
+          "about.f3dt": "Languages",
+          "about.f3dd": "Native Spanish · English B2",
+          "about.f4dt": "Certifications",
+          "about.f4dd": "Google AI Professional<br>AWS Academy · Cloud Architecting",
+          "contact.kicker": "05 / Contact",
+          "contact.h2": "Let's talk about ideas, products and systems.",
+          "contact.copy": "To talk about projects, technology or a collaboration opportunity.",
+          "footer.made": "Built with HTML, CSS and a bit of JavaScript.",
+          "lang.label": "Change language"
+        },
+        fr: {
+          "meta.desc": "Nicolás Fernández — Ingénieur logiciel et IA à Buenos Aires. Expérience en IA appliquée, plateformes web et intégrations cloud.",
+          "meta.ogdesc": "IA appliquée, produits numériques et intégrations cloud.",
+          "skip": "Aller au contenu",
+          "nav.aria": "Navigation principale",
+          "brand.aria": "Nicolás Fernández, accueil",
+          "nav.projects": "Projets",
+          "nav.experience": "Expérience",
+          "nav.contact": "Contact",
+          "hero.h1a": "Une technologie utile.",
+          "hero.h1b": "Des systèmes connectés.",
+          "hero.copy": "Je suis Nicolás, ingénieur logiciel à Buenos Aires. Je travaille entre produits full-stack, intégrations cloud et intelligence artificielle appliquée.",
+          "hero.cta1": "Découvrir les projets",
+          "hero.cta2": "M'écrire",
+          "hero.aside.aria": "Domaines de travail",
+          "hero.aside.label": "Ce sur quoi je travaille",
+          "hero.focus1": "Agents IA et expériences conversationnelles",
+          "hero.focus2": "Plateformes web et APIs",
+          "hero.focus3": "Intégrations cloud et traitement de données",
+          "hero.foot": "Construire · intégrer · améliorer",
+          "projects.kicker": "01 / Sélection",
+          "projects.h2": "Des projets qui ont du sens.",
+          "projects.intro": "Des produits et des travaux où le logiciel relie des besoins réels à des solutions concrètes.",
+          "ha.pill1": "Projet personnel",
+          "ha.pill2": "Produit numérique · Santé",
+          "ha.lead": "Une plateforme permettant aux cabinets médicaux de gérer patients et dossiers médicaux numériques en un seul endroit, avec des outils pensés pour le travail quotidien de l'équipe.",
+          "ha.link": "Voir la page",
+          "ha.overline": "Une consultation, de bout en bout",
+          "ha.f1": "Patients, couvertures et évolutions cliniques dans un espace unique.",
+          "ha.f2": "Études jointes et export de l'historique en PDF.",
+          "ha.f3": "Accès par cabinet et paternité visible sur chaque évolution.",
+          "ha.stacklabel": "Technologies",
+          "tesis.top": "Projet de fin d'études · En développement",
+          "tesis.h3": "Projet de thèse",
+          "tesis.p": "Projet en cours. Le résumé public, le périmètre et les détails techniques restent à compléter.",
+          "tesis.tag2": "Projet final",
+          "tesis.tag3": "À mettre à jour",
+          "rot.top": "Projet académique · Science des données",
+          "rot.aria": "Ouvrir le dépôt du projet de prédiction de l'attrition",
+          "rot.h3": "Prédiction de l'attrition des employés",
+          "rot.p": "Analyse exploratoire et modèles de classification pour étudier le turnover potentiel des employés. Inclut une API et une application web pour interagir avec les modèles.",
+          "experience.kicker": "02 / Parcours",
+          "experience.h2": "Une expérience qui traverse les disciplines.",
+          "experience.intro": "De la qualité logicielle et du développement full-stack à la modernisation, aux intégrations cloud et à l'IA appliquée.",
+          "role1.date": "NOV 2025 — PRÉSENT",
+          "role1.p1": "Développement d'agents basés sur des LLM pour la vente et le service client, intégrés aux CRM et à WhatsApp Business.",
+          "role1.p2": "Construction d'intégrations, de webhooks et d'outils pour gérer agents et conversations.",
+          "role1.p3": "Améliorations de fiabilité et d'efficacité : buffering des messages, circuit breakers et optimisation SQL Server.",
+          "role2.date": "JUIL 2025 — OCT 2025",
+          "role2.p1": "Intégrations pour équipements industriels et systèmes IoT/SCADA, de l'ingestion au traitement en temps réel.",
+          "role2.p2": "APIs et pipelines avec Azure Event Hubs, Kafka, Redis, Azure Functions et Azure Data Explorer.",
+          "role3.date": "AOÛT 2024 — JUIN 2025",
+          "role3.p1": "Conception d'architectures modernes et migration d'applications legacy vers Azure.",
+          "role3.p2": "Mise en œuvre de standards de sécurité avec OAuth 2.0 et OpenID Connect.",
+          "role4.date": "NOV 2023 — AOÛT 2024",
+          "role4.p1": "Développement d'API REST et d'applications web ; gestion de la sécurité applicative et des bases SQL Server.",
+          "role5.date": "NOV 2022 — NOV 2023",
+          "role5.p1": "Applications et intégrations dans l'écosystème Workday et automatisation des processus avec Power Automate.",
+          "role6.date": "MARS 2022 — NOV 2022",
+          "role6.p1": "Tests fonctionnels et support aux processus d'assurance qualité logicielle.",
+          "skills.kicker": "03 / Outils",
+          "skills.h2": "Un stack pour résoudre l'ensemble du problème.",
+          "skills.s1h3": "IA appliquée",
+          "skills.s1p": "Agents LLM · OpenAI · expériences conversationnelles · intégration CRM et canaux de messagerie",
+          "skills.s2h3": "Backend & APIs",
+          "skills.s3h3": "Frontend",
+          "skills.s4h3": "Cloud & données",
+          "skills.s5h3": "Pratiques",
+          "skills.s5p": "OAuth 2.0 · OpenID Connect · intégration de systèmes · automatisation · tests",
+          "about.kicker": "04 / En savoir plus",
+          "about.h2": "Un intérêt pour comprendre comment les pièces s'assemblent.",
+          "about.copy": "J'aime travailler à l'intersection du logiciel, des données et des besoins métier : de la modernisation des systèmes existants à la transformation d'idées nouvelles en outils utilisables.",
+          "about.f1dt": "Formation",
+          "about.f1dd": "Ingénierie informatique · UADE<br>2022–2026",
+          "about.f2dt": "Localisation",
+          "about.f2dd": "Buenos Aires, Argentine",
+          "about.f3dt": "Langues",
+          "about.f3dd": "Espagnol natif · Anglais B2",
+          "about.f4dt": "Certifications",
+          "about.f4dd": "Google AI Professional<br>AWS Academy · Cloud Architecting",
+          "contact.kicker": "05 / Contact",
+          "contact.h2": "Parlons d'idées, de produits et de systèmes.",
+          "contact.copy": "Pour échanger sur des projets, la technologie ou une opportunité de collaboration.",
+          "footer.made": "Réalisé avec HTML, CSS et un peu de JavaScript.",
+          "lang.label": "Changer de langue"
+        },
+        de: {
+          "meta.desc": "Nicolás Fernández — Software- und KI-Ingenieur in Buenos Aires. Erfahrung in angewandter KI, Web-Plattformen und Cloud-Integrationen.",
+          "meta.ogdesc": "Angewandte KI, digitale Produkte und Cloud-Integrationen.",
+          "skip": "Zum Inhalt springen",
+          "nav.aria": "Hauptnavigation",
+          "brand.aria": "Nicolás Fernández, Start",
+          "nav.projects": "Projekte",
+          "nav.experience": "Erfahrung",
+          "nav.contact": "Kontakt",
+          "hero.h1a": "Nützliche Technologie.",
+          "hero.h1b": "Vernetzte Systeme.",
+          "hero.copy": "Ich bin Nicolás, Software-Ingenieur in Buenos Aires. Ich arbeite an Full-Stack-Produkten, Cloud-Integrationen und angewandter künstlicher Intelligenz.",
+          "hero.cta1": "Projekte entdecken",
+          "hero.cta2": "Schreib mir",
+          "hero.aside.aria": "Arbeitsbereiche",
+          "hero.aside.label": "Woran ich arbeite",
+          "hero.focus1": "KI-Agenten und Konversationserlebnisse",
+          "hero.focus2": "Web-Plattformen und APIs",
+          "hero.focus3": "Cloud-Integrationen und Datenverarbeitung",
+          "hero.foot": "Bauen · integrieren · verbessern",
+          "projects.kicker": "01 / Auswahl",
+          "projects.h2": "Projekte mit Sinn.",
+          "projects.intro": "Produkte und Arbeiten, bei denen Software reale Anforderungen mit konkreten Lösungen verbindet.",
+          "ha.pill1": "Persönliches Projekt",
+          "ha.pill2": "Digitales Produkt · Gesundheit",
+          "ha.lead": "Eine Plattform, mit der Arztpraxen Patienten und digitale Krankengeschichten an einem Ort verwalten – mit Werkzeugen für die tägliche Arbeit des Teams.",
+          "ha.link": "Zur Landingpage",
+          "ha.overline": "Eine Konsultation, von Anfang bis Ende",
+          "ha.f1": "Patienten, Versicherungen und klinische Verläufe an einem Ort.",
+          "ha.f2": "Angehängte Studien und PDF-Export der Krankengeschichte.",
+          "ha.f3": "Praxisbezogene Zugriffe und sichtbare Autorschaft bei jedem Eintrag.",
+          "ha.stacklabel": "Technologien",
+          "tesis.top": "Abschlussarbeit · In Entwicklung",
+          "tesis.h3": "Abschlussarbeit",
+          "tesis.p": "Laufendes Projekt. Öffentliche Zusammenfassung, Umfang und technische Details folgen noch.",
+          "tesis.tag2": "Abschlussarbeit",
+          "tesis.tag3": "Wird aktualisiert",
+          "rot.top": "Akademisches Projekt · Data Science",
+          "rot.aria": "Repository zur Vorhersage von Mitarbeiterfluktuation öffnen",
+          "rot.h3": "Vorhersage von Mitarbeiterfluktuation",
+          "rot.p": "Explorative Analyse und Klassifikationsmodelle zur Untersuchung möglicher Mitarbeiterfluktuation. Inklusive API und Webanwendung zur Interaktion mit den Modellen.",
+          "experience.kicker": "02 / Werdegang",
+          "experience.h2": "Erfahrung über mehrere Disziplinen.",
+          "experience.intro": "Von Softwarequalität und Full-Stack-Entwicklung bis zu Modernisierung, Cloud-Integrationen und angewandter KI.",
+          "role1.date": "NOV 2025 — HEUTE",
+          "role1.p1": "Entwicklung LLM-basierter Agenten für Vertrieb und Kundenservice, integriert mit CRMs und WhatsApp Business.",
+          "role1.p2": "Aufbau von Integrationen, Webhooks und Werkzeugen zur Verwaltung von Agenten und Konversationen.",
+          "role1.p3": "Verbesserungen bei Zuverlässigkeit und Effizienz: Message-Buffering, Circuit Breakers und SQL-Server-Optimierung.",
+          "role2.date": "JULI 2025 — OKT 2025",
+          "role2.p1": "Integrationen für Anlagengeräte und IoT-/SCADA-Systeme, von der Aufnahme bis zur Echtzeitverarbeitung.",
+          "role2.p2": "APIs und Pipelines mit Azure Event Hubs, Kafka, Redis, Azure Functions und Azure Data Explorer.",
+          "role3.date": "AUG 2024 — JUNI 2025",
+          "role3.p1": "Entwurf moderner Architekturen und Migration von Legacy-Anwendungen zu Azure.",
+          "role3.p2": "Implementierung von Sicherheitsstandards mit OAuth 2.0 und OpenID Connect.",
+          "role4.date": "NOV 2023 — AUG 2024",
+          "role4.p1": "Entwicklung von REST-APIs und Webanwendungen; Verwaltung von Anwendungssicherheit und SQL-Server-Datenbanken.",
+          "role5.date": "NOV 2022 — NOV 2023",
+          "role5.p1": "Anwendungen und Integrationen im Workday-Ökosystem und Prozessautomatisierung mit Power Automate.",
+          "role6.date": "MÄRZ 2022 — NOV 2022",
+          "role6.p1": "Funktionstests und Unterstützung von Software-Qualitätssicherungsprozessen.",
+          "skills.kicker": "03 / Werkzeuge",
+          "skills.h2": "Ein Stack, um das gesamte Problem zu lösen.",
+          "skills.s1h3": "Angewandte KI",
+          "skills.s1p": "LLM-Agenten · OpenAI · Konversationserlebnisse · CRM- und Messaging-Integration",
+          "skills.s2h3": "Backend & APIs",
+          "skills.s3h3": "Frontend",
+          "skills.s4h3": "Cloud & Daten",
+          "skills.s5h3": "Praktiken",
+          "skills.s5p": "OAuth 2.0 · OpenID Connect · Systemintegration · Automatisierung · Testing",
+          "about.kicker": "04 / Etwas mehr",
+          "about.h2": "Ein Interesse daran zu verstehen, wie die Teile zusammenpassen.",
+          "about.copy": "Ich arbeite gern an der Schnittstelle von Software, Daten und Geschäftsanforderungen: von der Modernisierung bestehender Systeme bis hin zur Umsetzung neuer Ideen in nutzbare Werkzeuge.",
+          "about.f1dt": "Ausbildung",
+          "about.f1dd": "Informatik-Ingenieurwesen · UADE<br>2022–2026",
+          "about.f2dt": "Standort",
+          "about.f2dd": "Buenos Aires, Argentinien",
+          "about.f3dt": "Sprachen",
+          "about.f3dd": "Spanisch Muttersprache · Englisch B2",
+          "about.f4dt": "Zertifizierungen",
+          "about.f4dd": "Google AI Professional<br>AWS Academy · Cloud Architecting",
+          "contact.kicker": "05 / Kontakt",
+          "contact.h2": "Sprechen wir über Ideen, Produkte und Systeme.",
+          "contact.copy": "Zum Austausch über Projekte, Technologie oder eine Kooperationsmöglichkeit.",
+          "footer.made": "Erstellt mit HTML, CSS und ein wenig JavaScript.",
+          "lang.label": "Sprache ändern"
+        },
+        pt: {
+          "meta.desc": "Nicolás Fernández — Engenheiro de software e IA em Buenos Aires. Experiência em IA aplicada, plataformas web e integrações em nuvem.",
+          "meta.ogdesc": "IA aplicada, produtos digitais e integrações em nuvem.",
+          "skip": "Pular para o conteúdo",
+          "nav.aria": "Navegação principal",
+          "brand.aria": "Nicolás Fernández, início",
+          "nav.projects": "Projetos",
+          "nav.experience": "Experiência",
+          "nav.contact": "Contato",
+          "hero.h1a": "Tecnologia útil.",
+          "hero.h1b": "Sistemas conectados.",
+          "hero.copy": "Sou Nicolás, engenheiro de software em Buenos Aires. Trabalho entre produtos full-stack, integrações em nuvem e inteligência artificial aplicada.",
+          "hero.cta1": "Explorar projetos",
+          "hero.cta2": "Me escreva",
+          "hero.aside.aria": "Áreas de trabalho",
+          "hero.aside.label": "No que estou trabalhando",
+          "hero.focus1": "Agentes de IA e experiências conversacionais",
+          "hero.focus2": "Plataformas web e APIs",
+          "hero.focus3": "Integrações em nuvem e processamento de dados",
+          "hero.foot": "Construir · integrar · melhorar",
+          "projects.kicker": "01 / Seleção",
+          "projects.h2": "Projetos com propósito.",
+          "projects.intro": "Produtos e trabalhos em que o software conecta necessidades reais a soluções concretas.",
+          "ha.pill1": "Projeto pessoal",
+          "ha.pill2": "Produto digital · Saúde",
+          "ha.lead": "Uma plataforma para consultórios médicos gerenciarem pacientes e prontuários digitais em um só lugar, com ferramentas pensadas para o trabalho diário da equipe.",
+          "ha.link": "Ver a landing page",
+          "ha.overline": "Uma consulta, do início ao fim",
+          "ha.f1": "Pacientes, coberturas e evoluções clínicas em um único espaço.",
+          "ha.f2": "Estudos anexados e exportação do prontuário em PDF.",
+          "ha.f3": "Acessos por consultório e autoria visível em cada evolução.",
+          "ha.stacklabel": "Tecnologias",
+          "tesis.top": "Trabalho de conclusão · Em desenvolvimento",
+          "tesis.h3": "Projeto de tese",
+          "tesis.p": "Projeto em andamento. O resumo público, o escopo e os detalhes técnicos ainda serão preenchidos.",
+          "tesis.tag2": "Trabalho de conclusão",
+          "tesis.tag3": "Informação a atualizar",
+          "rot.top": "Projeto acadêmico · Ciência de dados",
+          "rot.aria": "Abrir o repositório de previsão de rotatividade de funcionários",
+          "rot.h3": "Previsão de rotatividade de funcionários",
+          "rot.p": "Análise exploratória e modelos de classificação para estudar a possível rotatividade de funcionários. Inclui uma API e um aplicativo web para interagir com os modelos.",
+          "experience.kicker": "02 / Trajetória",
+          "experience.h2": "Experiência que atravessa disciplinas.",
+          "experience.intro": "Da qualidade de software e do desenvolvimento full-stack à modernização, integrações em nuvem e IA aplicada.",
+          "role1.date": "NOV 2025 — ATUALMENTE",
+          "role1.p1": "Desenvolvimento de agentes baseados em LLM para vendas e atendimento ao cliente, integrados a CRMs e ao WhatsApp Business.",
+          "role1.p2": "Construção de integrações, webhooks e ferramentas para gerenciar agentes e conversas.",
+          "role1.p3": "Melhorias de confiabilidade e eficiência: buffering de mensagens, circuit breakers e otimização do SQL Server.",
+          "role2.date": "JUL 2025 — OUT 2025",
+          "role2.p1": "Integrações para dispositivos de planta e sistemas IoT/SCADA, da ingestão ao processamento em tempo real.",
+          "role2.p2": "APIs e pipelines com Azure Event Hubs, Kafka, Redis, Azure Functions e Azure Data Explorer.",
+          "role3.date": "AGO 2024 — JUN 2025",
+          "role3.p1": "Design de arquiteturas modernas e migração de aplicações legadas para o Azure.",
+          "role3.p2": "Implementação de padrões de segurança com OAuth 2.0 e OpenID Connect.",
+          "role4.date": "NOV 2023 — AGO 2024",
+          "role4.p1": "Desenvolvimento de APIs REST e aplicações web; administração de segurança de aplicações e bancos SQL Server.",
+          "role5.date": "NOV 2022 — NOV 2023",
+          "role5.p1": "Aplicações e integrações no ecossistema Workday e automação de processos com Power Automate.",
+          "role6.date": "MAR 2022 — NOV 2022",
+          "role6.p1": "Testes funcionais e suporte a processos de garantia de qualidade de software.",
+          "skills.kicker": "03 / Ferramentas",
+          "skills.h2": "Um stack para resolver o problema completo.",
+          "skills.s1h3": "IA aplicada",
+          "skills.s1p": "Agentes LLM · OpenAI · experiências conversacionais · integração com CRM e canais de mensagens",
+          "skills.s2h3": "Backend & APIs",
+          "skills.s3h3": "Frontend",
+          "skills.s4h3": "Cloud & dados",
+          "skills.s5h3": "Práticas",
+          "skills.s5p": "OAuth 2.0 · OpenID Connect · integração de sistemas · automação · testes",
+          "about.kicker": "04 / Um pouco mais",
+          "about.h2": "Interesse em entender como as peças se encaixam.",
+          "about.copy": "Gosto de trabalhar na interseção entre software, dados e necessidades de negócio: desde modernizar sistemas existentes até transformar novas ideias em ferramentas utilizáveis.",
+          "about.f1dt": "Formação",
+          "about.f1dd": "Engenharia da Computação · UADE<br>2022–2026",
+          "about.f2dt": "Localização",
+          "about.f2dd": "Buenos Aires, Argentina",
+          "about.f3dt": "Idiomas",
+          "about.f3dd": "Espanhol nativo · Inglês B2",
+          "about.f4dt": "Certificações",
+          "about.f4dd": "Google AI Professional<br>AWS Academy · Cloud Architecting",
+          "contact.kicker": "05 / Contato",
+          "contact.h2": "Vamos conversar sobre ideias, produtos e sistemas.",
+          "contact.copy": "Para conversar sobre projetos, tecnologia ou uma oportunidade de colaboração.",
+          "footer.made": "Feito com HTML, CSS e um pouco de JavaScript.",
+          "lang.label": "Mudar idioma"
+        },
+        zh: {
+          "meta.desc": "Nicolás Fernández — 布宜诺斯艾利斯的软件与 AI 工程师。拥有应用 AI、Web 平台与云集成经验。",
+          "meta.ogdesc": "应用 AI、数字产品与云集成。",
+          "skip": "跳到主要内容",
+          "nav.aria": "主导航",
+          "brand.aria": "Nicolás Fernández，主页",
+          "nav.projects": "项目",
+          "nav.experience": "经历",
+          "nav.contact": "联系",
+          "hero.h1a": "实用技术。",
+          "hero.h1b": "互联系统。",
+          "hero.copy": "我是 Nicolás，布宜诺斯艾利斯的软件工程师，专注于全栈产品、云集成与应用型人工智能。",
+          "hero.cta1": "查看项目",
+          "hero.cta2": "给我写信",
+          "hero.aside.aria": "工作领域",
+          "hero.aside.label": "我正在做什么",
+          "hero.focus1": "AI 代理与对话式体验",
+          "hero.focus2": "Web 平台与 API",
+          "hero.focus3": "云集成与数据处理",
+          "hero.foot": "构建 · 集成 · 改进",
+          "projects.kicker": "01 / 精选",
+          "projects.h2": "有目标的项目。",
+          "projects.intro": "软件连接真实需求与切实解决方案的产品与工作。",
+          "ha.pill1": "个人项目",
+          "ha.pill2": "数字产品 · 医疗",
+          "ha.lead": "让诊所在一个地方管理患者与电子病历的平台，配备为团队日常工作设计的工具。",
+          "ha.link": "查看落地页",
+          "ha.overline": "一次就诊，全程管理",
+          "ha.f1": "患者、保险与临床记录尽在一处。",
+          "ha.f2": "附件检查与病历 PDF 导出。",
+          "ha.f3": "按诊所设置访问权限，每份记录都可见作者。",
+          "ha.stacklabel": "技术栈",
+          "tesis.top": "毕业项目 · 开发中",
+          "tesis.h3": "毕业论文项目",
+          "tesis.p": "进行中的项目。公开摘要、范围与技术细节待补充。",
+          "tesis.tag2": "毕业项目",
+          "tesis.tag3": "待更新",
+          "rot.top": "学术项目 · 数据科学",
+          "rot.aria": "打开员工流失预测仓库",
+          "rot.h3": "员工流失预测",
+          "rot.p": "用于研究员工潜在流失的探索性分析与分类模型。包含 API 和 Web 应用与模型交互。",
+          "experience.kicker": "02 / 经历",
+          "experience.h2": "跨越多个领域的经验。",
+          "experience.intro": "从软件质量与全栈开发，到现代化、云集成与应用 AI。",
+          "role1.date": "2025年11月 — 至今",
+          "role1.p1": "开发基于 LLM 的销售与客服代理，集成 CRM 与 WhatsApp Business。",
+          "role1.p2": "构建用于管理代理与对话的集成、Webhook 与工具。",
+          "role1.p3": "提升可靠性与效率：消息缓冲、熔断器与 SQL Server 优化。",
+          "role2.date": "2025年7月 — 2025年10月",
+          "role2.p1": "面向工厂设备与 IoT/SCADA 系统的集成，覆盖从数据接入到实时处理。",
+          "role2.p2": "基于 Azure Event Hubs、Kafka、Redis、Azure Functions 和 Azure Data Explorer 的 API 与流水线。",
+          "role3.date": "2024年8月 — 2025年6月",
+          "role3.p1": "设计现代架构并将遗留应用迁移至 Azure。",
+          "role3.p2": "基于 OAuth 2.0 与 OpenID Connect 实施安全标准。",
+          "role4.date": "2023年11月 — 2024年8月",
+          "role4.p1": "开发 REST API 与 Web 应用；负责应用安全与 SQL Server 数据库管理。",
+          "role5.date": "2022年11月 — 2023年11月",
+          "role5.p1": "Workday 生态系统中的应用与集成，以及使用 Power Automate 的流程自动化。",
+          "role6.date": "2022年3月 — 2022年11月",
+          "role6.p1": "功能测试与软件质量保证流程支持。",
+          "skills.kicker": "03 / 工具",
+          "skills.h2": "一套解决完整问题的技术栈。",
+          "skills.s1h3": "应用 AI",
+          "skills.s1p": "LLM 代理 · OpenAI · 对话式体验 · CRM 与消息渠道集成",
+          "skills.s2h3": "Backend & APIs",
+          "skills.s3h3": "Frontend",
+          "skills.s4h3": "云与数据",
+          "skills.s5h3": "实践",
+          "skills.s5p": "OAuth 2.0 · OpenID Connect · 系统集成 · 自动化 · 测试",
+          "about.kicker": "04 / 更多",
+          "about.h2": "热衷于理解各个部分如何协同工作。",
+          "about.copy": "我喜欢在软件、数据与业务需求之间工作：从现有系统现代化，到把新想法变成可用的工具。",
+          "about.f1dt": "教育背景",
+          "about.f1dd": "计算机工程 · UADE<br>2022–2026",
+          "about.f2dt": "所在地",
+          "about.f2dd": "阿根廷，布宜诺斯艾利斯",
+          "about.f3dt": "语言",
+          "about.f3dd": "西班牙语母语 · 英语 B2",
+          "about.f4dt": "认证",
+          "about.f4dd": "Google AI Professional<br>AWS Academy · Cloud Architecting",
+          "contact.kicker": "05 / 联系",
+          "contact.h2": "让我们聊聊想法、产品与系统。",
+          "contact.copy": "聊聊项目、技术或合作机会。",
+          "footer.made": "使用 HTML、CSS 和少量 JavaScript 构建。",
+          "lang.label": "切换语言"
+        }
+      };
+      function t(lang, key) {
+        let v = I18N[lang] && I18N[lang][key];
+        if (v == null && lang !== 'es') v = I18N.es && I18N.es[key];
+        return v;
+      }
+      function applyLang(lang) {
+        document.documentElement.lang = lang;
+        document.querySelectorAll('[data-i18n]').forEach((el) => {
+          const v = t(lang, el.getAttribute('data-i18n'));
+          if (v != null) {
+            if (el.tagName === 'META') el.setAttribute('content', v);
+            else el.textContent = v;
+          }
+        });
+        document.querySelectorAll('[data-i18n-html]').forEach((el) => {
+          const v = t(lang, el.getAttribute('data-i18n-html'));
+          if (v != null) el.innerHTML = v;
+        });
+        document.querySelectorAll('[data-i18n-aria]').forEach((el) => {
+          const v = t(lang, el.getAttribute('data-i18n-aria'));
+          if (v != null) el.setAttribute('aria-label', v);
+        });
+        const sel = document.getElementById('lang-switch');
+        if (sel) sel.value = lang;
+        try { localStorage.setItem('lang', lang); } catch (e) {}
+      }
+      let lang = 'es';
+      try { lang = localStorage.getItem('lang') || 'es'; } catch (e) {}
+      if (!I18N[lang]) lang = 'es';
+      applyLang(lang);
+      const langSel = document.getElementById('lang-switch');
+      if (langSel) langSel.addEventListener('change', () => applyLang(langSel.value));
+
       const progress = document.querySelector('.progress');
       const year = document.querySelector('#year');
       year.textContent = new Date().getFullYear();
